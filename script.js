@@ -27,7 +27,7 @@ const getSnails = () => {
         }
     })
         .then(response => {
-            snailData = response.data;
+            snailData = response.data.snails;
             console.log(snailData);
             startButton.innerText = "¡Iniciar Carrera!";
             startButton.disabled = false;
