@@ -37,6 +37,11 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    background-image: url("imgs/pista.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     gap: 20px;
     position: relative;
     overflow: hidden;
@@ -87,7 +92,6 @@ body {
 .snail-card img {
     width: 50px; /* Tamaño fijo para las imágenes en las tarjetas */
     height: 50px;
-    object-fit: contain;
     display: block;
     margin-bottom: 10px;
 }
