@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrera de Caracoles Fantásticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-wrapper bg-gradient-to-br from-green-50 to-emerald-100 shadow-2xl">
+        <h1 class="text-4xl font-bold text-emerald-800 mb-8 text-center">Carrera de Caracoles Fantásticos</h1>
+        <div id="game-container">
+            <div class="race-section">
+                <div id="track" class="bg-gradient-to-r from-emerald-100 to-green-100">
+                    <div class="track-lane bg-white/50 backdrop-blur-sm" data-lane="1"></div>
+                    <div class="track-lane bg-white/50 backdrop-blur-sm" data-lane="2"></div>
+                    <div class="track-lane bg-white/50 backdrop-blur-sm" data-lane="3"></div>
+                    <div class="track-lane bg-white/50 backdrop-blur-sm" data-lane="4"></div>
+                </div>
+                <button id="start-button" class="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transform transition hover:scale-105">¡Empezar Carrera!</button>
+            </div>
+                        <div class="stats-section p-4 flex flex-col gap-3">
+                <div class="snail-card p-3 bg-white rounded-lg shadow hover:shadow-lg transition-shadow flex gap-3 items-start" data-snail="helicol">
+                    <div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gradient-to-b from-emerald-50 to-green-100">
+                        <img src="imgs/helicol.png" alt="Helicol" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="stats flex-grow min-w-0">
+                        <h3 class="text-base font-semibold text-emerald-700 mb-2">Helicol</h3>
+                        <div class="stat-item mb-2">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-sm font-medium">Velocidad</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-xs text-emerald-600">4</span>
+                                    <span class="text-xs text-gray-400">-</span>
+                                    <span class="text-xs text-emerald-600">7</span>
+                                </div>
+                            </div>
+                            <div class="mt-1 h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                                <div class="absolute inset-y-0 bg-emerald-200" style="left: 40%; right: 30%;"></div>
+                                <div class="absolute inset-y-0 bg-emerald-500" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-item mb-2">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-sm font-medium">Aceleración</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-xs text-amber-600">5</span>
+                                    <span class="text-xs text-gray-400">-</span>
+                                    <span class="text-xs text-amber-600">8</span>
+                                </div>
+                            </div>
+                            <div class="mt-1 h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                                <div class="absolute inset-y-0 bg-amber-200" style="left: 50%; right: 20%;"></div>
+                                <div class="absolute inset-y-0 bg-amber-500" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-sm font-medium">Pegajosidad</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-xs text-pink-600">6</span>
+                                    <span class="text-xs text-gray-400">-</span>
+                                    <span class="text-xs text-pink-600">9</span>
+                                </div>
+                            </div>
+                            <div class="mt-1 h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                                <div class="absolute inset-y-0 bg-pink-200" style="left: 60%; right: 10%;"></div>
+                                <div class="absolute inset-y-0 bg-pink-500" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snail-card p-3 bg-white rounded-lg shadow hover:shadow-lg transition-shadow flex gap-3 items-start" data-snail="magicol">
+                    <div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gradient-to-b from-emerald-50 to-green-100">
+                        <img src="imgs/magicol.png" alt="Magicol" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="stats flex-grow min-w-0">
+                        <h3 class="text-base font-semibold text-emerald-700 mb-2">Magicol</h3>
+                        <div class="stat-item mb-2">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-sm font-medium">Velocidad</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-xs text-emerald-600">5</span>
+                                    <span class="text-xs text-gray-400">-</span>
+                                    <span class="text-xs text-emerald-600">8</span>
+                                </div>
+                            </div>
+                            <div class="mt-1 h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                                <div class="absolute inset-y-0 bg-emerald-200" style="left: 50%; right: 20%;"></div>
+                                <div class="absolute inset-y-0 bg-emerald-500" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-item mb-2">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-sm font-medium">Aceleración</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-xs text-amber-600">6</span>
+                                    <span class="text-xs text-gray-400">-</span>
+                                    <span class="text-xs text-amber-600">9</span>
+                                </div>
+                            </div>
+                            <div class="mt-1 h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                                <div class="absolute inset-y-0 bg-amber-200" style="left: 60%; right: 10%;"></div>
+                                <div class="absolute inset-y-0 bg-amber-500" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-sm font-medium">Pegajosidad</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-xs text-pink-600">5</span>
+                                    <span class="text-xs text-gray-400">-</span>
+                                    <span class="text-xs text-pink-600">8</span>
+                                </div>
+                            </div>
+                            <div class="mt-1 h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                                <div class="absolute inset-y-0 bg-pink-200" style="left: 50%; right: 20%;"></div>
+                                <div class="absolute inset-y-0 bg-pink-500" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snail-card p-3 bg-white rounded-lg shadow hover:shadow-lg transition-shadow flex gap-3 items-start" data-snail="mecanicol">
+                    <div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gradient-to-b from-emerald-50 to-green-100">
+                        <img src="imgs/mecanicol.png" alt="Mecanicol" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="stats flex-grow min-w-0">
+                        <h3 class="text-base font-semibold text-emerald-700 mb-2">Mecanicol</h3>
+                        <div class="stat-item mb-2">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-sm font-medium">Velocidad</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-xs text-emerald-600">7</span>
+                                    <span class="text-xs text-gray-400">-</span>
+                                    <span class="text-xs text-emerald-600">10</span>
+                                </div>
+                            </div>
+                            <div class="mt-1 h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                                <div class="absolute inset-y-0 bg-emerald-200" style="left: 70%; right: 0%;"></div>
+                                <div class="absolute inset-y-0 bg-emerald-500" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-item mb-2">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-sm font-medium">Aceleración</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-xs text-amber-600">6</span>
+                                    <span class="text-xs text-gray-400">-</span>
+                                    <span class="text-xs text-amber-600">9</span>
+                                </div>
+                            </div>
+                            <div class="mt-1 h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                                <div class="absolute inset-y-0 bg-amber-200" style="left: 60%; right: 10%;"></div>
+                                <div class="absolute inset-y-0 bg-amber-500" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-sm font-medium">Pegajosidad</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-xs text-pink-600">4</span>
+                                    <span class="text-xs text-gray-400">-</span>
+                                    <span class="text-xs text-pink-600">7</span>
+                                </div>
+                            </div>
+                            <div class="mt-1 h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                                <div class="absolute inset-y-0 bg-pink-200" style="left: 40%; right: 30%;"></div>
+                                <div class="absolute inset-y-0 bg-pink-500" style="width: 55%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snail-card p-3 bg-white rounded-lg shadow hover:shadow-lg transition-shadow flex gap-3 items-start" data-snail="turbocol">
+                    <div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gradient-to-b from-emerald-50 to-green-100">
+                        <img src="imgs/turbocol.png" alt="Turbocol" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="stats flex-grow min-w-0">
+                        <h3 class="text-base font-semibold text-emerald-700 mb-2">Turbocol</h3>
+                        <div class="stat-item mb-2">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-sm font-medium">Velocidad</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-xs text-emerald-600">8</span>
+                                    <span class="text-xs text-gray-400">-</span>
+                                    <span class="text-xs text-emerald-600">10</span>
+                                </div>
+                            </div>
+                            <div class="mt-1 h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                                <div class="absolute inset-y-0 bg-emerald-200" style="left: 80%; right: 0%;"></div>
+                                <div class="absolute inset-y-0 bg-emerald-500" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-item mb-2">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-sm font-medium">Aceleración</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-xs text-amber-600">7</span>
+                                    <span class="text-xs text-gray-400">-</span>
+                                    <span class="text-xs text-amber-600">10</span>
+                                </div>
+                            </div>
+                            <div class="mt-1 h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                                <div class="absolute inset-y-0 bg-amber-200" style="left: 70%; right: 0%;"></div>
+                                <div class="absolute inset-y-0 bg-amber-500" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-sm font-medium">Pegajosidad</span>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-xs text-pink-600">4</span>
+                                    <span class="text-xs text-gray-400">-</span>
+                                    <span class="text-xs text-pink-600">6</span>
+                                </div>
+                            </div>
+                            <div class="mt-1 h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                                <div class="absolute inset-y-0 bg-pink-200" style="left: 40%; right: 40%;"></div>
+                                <div class="absolute inset-y-0 bg-pink-500" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

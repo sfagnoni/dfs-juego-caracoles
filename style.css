@@ -1,0 +1,148 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #e6ffe6 0%, #c1f0c1 100%);
+    overflow-x: hidden;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.game-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px;
+    padding: 20px;
+}
+
+#game-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    min-height: 600px;
+}
+
+.race-section {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#track {
+    flex: 1;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.track-lane {
+    height: 80px;
+    background-color: #d0d0d0;
+    border-radius: 5px;
+    position: relative;
+}
+
+.snail {
+    position: absolute;
+    width: 60px; /* Tamaño reducido para los caracoles en carrera */
+    height: 60px;
+    left: 0;
+    transition: left 0.1s linear;
+    transform: translateY(-50%);
+}
+
+.snail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-width: 60px; /* Limitar el tamaño máximo */
+}
+
+.stats-section {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #e6ffe6;
+    border-radius: 10px;
+}
+
+.snail-card {
+    background-color: #ffffff;
+    border: 1px solid #c0e0c0;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.snail-card img {
+    width: 50px; /* Tamaño fijo para las imágenes en las tarjetas */
+    height: 50px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.snail-card h3 {
+    margin-top: 0;
+    font-size: 1.1em;
+    color: #4a6a2a;
+}
+
+.snail-card p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.snail-card .stat-bar-container {
+    width: 100%;
+    background-color: #eee;
+    border-radius: 3px;
+    overflow: hidden;
+    height: 8px; /* Altura de la barra de estadística */
+    margin-top: 3px;
+}
+
+.snail-card .stat-bar {
+    height: 100%;
+    background-color: #6cbf4d; /* Color por defecto para las barras */
+    width: 0%; /* Se actualizará con JS */
+    border-radius: 3px;
+}
+/* Colores específicos para las barras si quieres diferenciarlos por característica */
+.stat-speed .stat-bar { background-color: #4CAF50; }
+.stat-acceleration .stat-bar { background-color: #FFC107; }
+.stat-stickiness .stat-bar { background-color: #E91E63; }
+
+
+#start-button {
+    padding: 12px 25px;
+    font-size: 1.3em;
+    cursor: pointer;
+    background-color: #28a745; /* Un verde más vivo */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#start-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+#start-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
