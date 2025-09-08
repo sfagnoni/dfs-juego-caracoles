@@ -13,56 +13,64 @@ const snailImages = [
 let snailData;
 let snails
 
-axios.get("http://localhost:3000/v1/snails", {
-    headers: {
-        "Content-Type": 'application/json',
-        "authorization": `Bearer ${localStorage.getItem('token')}`
-    }
-})
-    .then(response => {
-        snailData = response.data;
-        console.log(snailData);
-        startButton.innerText = "Iniciar Carrera";
-        startButton.disabled = false;
+
+const getSnails = () => {
+
+    snails? snails.forEach(snail => track.removeChild(snail)): null;
+
+    let snailData = [];
+
+    axios.get("http://localhost:3000/v1/snails", {
+        headers: {
+            "Content-Type": 'application/json',
+            "authorization": `Bearer ${localStorage.getItem('token')}`
+        }
     })
-    .catch(error => {
-        console.error("Error fetching snails, using local data:", error);
-        snailData = [
-            { name: "Helicol", speed: randomInRange(3, 5), acceleration: randomInRange(1, 2), stickiness: randomInRange(2, 3), id: 'snail-0' },
-            { name: "Magicol", speed: randomInRange(3, 4), acceleration: randomInRange(4, 5), stickiness: randomInRange(2, 3), id: 'snail-1' },
-            { name: "Mecanicol", speed: randomInRange(3, 4), acceleration: randomInRange(1, 2), stickiness: randomInRange(1, 2), id: 'snail-2' },
-            { name: "Turbocol", speed: randomInRange(3, 4), acceleration: randomInRange(4, 5), stickiness: randomInRange(2, 3), id: 'snail-3' }
-        ];
-        startButton.innerText = "Carrera local";
-    }).finally(() => {
-        
-        snails = snailData.map((data, index) => {
-            const snail = document.createElement('div');
-            const img = document.createElement("img");
-            img.src = snailImages[index];
-            snail.appendChild(img);
-            snail.classList.add('snail');
-            snail.id = data.id;
-            snail.data = data;
-            snail.position = 0;
-            snail.verticalPosition = 335 + index * 100; // Espaciado vertical entre caracoles
-            snail.style.top = `${snail.verticalPosition}px`;
-            snail.currentSpeed = 0;
-            track.appendChild(snail);
-            return snail;
-        });
+        .then(response => {
+            snailData = response.data;
+            console.log(snailData);
+            startButton.innerText = "¡Iniciar Carrera!";
+            startButton.disabled = false;
+        })
+        .catch(error => {
+            console.error("Error fetching snails, using local data:", error);
+            snailData = [
+                { name: "Helicol", speed: randomInRange(2, 5), acceleration: randomInRange(1, 2), stickiness: randomInRange(2, 3), id: 'snail-0' },
+                { name: "Magicol", speed: randomInRange(3, 4), acceleration: randomInRange(4, 5), stickiness: randomInRange(2, 3), id: 'snail-1' },
+                { name: "Mecanicol", speed: randomInRange(3, 4), acceleration: randomInRange(1, 2), stickiness: randomInRange(1, 2), id: 'snail-2' },
+                { name: "Turbocol", speed: randomInRange(2, 4), acceleration: randomInRange(3, 5), stickiness: randomInRange(2, 3), id: 'snail-3' }
+            ];
+            startButton.innerText = "Carrera local";
+        }).finally(() => {
 
-        snails.forEach(snail => {
-            snail.element = snail;
-        });
+            snails = snailData.map((data, index) => {
+                const snail = document.createElement('div');
+                const img = document.createElement("img");
+                img.src = snailImages[index];
+                snail.appendChild(img);
+                snail.classList.add('snail');
+                snail.id = data.id;
+                snail.data = data;
+                snail.position = 0;
+                snail.verticalPosition = 335 + index * 100; // Espaciado vertical entre caracoles
+                snail.style.top = `${snail.verticalPosition}px`;
+                snail.currentSpeed = 0;
+                track.appendChild(snail);
+                return snail;
+            });
 
-        startButton.disabled = false;
+            snails.forEach(snail => {
+                snail.element = snail;
+            });
+
+            startButton.disabled = false;
 
 
-    })
+        })
 
+}
 
-
+getSnails();
 
 function moveSnail(snail) {
     // La velocidad base puede depender de la "velocidad" del caracol
@@ -103,6 +111,8 @@ function startRace() {
                 startButton.disabled = false;
                 winnerFound = true;
                 alert(`¡${snail.data.name} ha ganado la carrera!`);
+                getSnails();
+                startButton.innerText = "Cargando datos de nueva carrera...";
                 // Opcional: reiniciar caracoles a la posición inicial después de un ganador
                 // setTimeout(createSnailsAndStats, 2000); // Reiniciar después de 2 segundos
             }
@@ -114,6 +124,7 @@ function startRace() {
         if (!winnerFound && startButton.disabled) { // Si nadie ha ganado todavía
             alert("La carrera ha terminado sin un ganador claro en el tiempo estipulado. ¡Empate!");
             clearInterval(raceInterval);
+
             startButton.disabled = false;
         }
     }, 60000); // Por ejemplo, 60 segundos
