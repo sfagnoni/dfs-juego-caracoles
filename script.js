@@ -167,7 +167,7 @@ if (registerForm) {
             return;
         }
 
-        axios.post('http://localhost:3000/v1/auth/register', { username, password })
+        axios.post('http://localhost:3000/v1/auth/register', { username, password, confirmPassword })
             .then(response => {
                 // Assuming the register endpoint also returns a token
                 localStorage.setItem('token', response.data.token);
