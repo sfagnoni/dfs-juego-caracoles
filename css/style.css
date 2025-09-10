@@ -38,7 +38,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background-image: url("imgs/pista.png");
+    background-image: url("../imgs/pista.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

@@ -4,7 +4,7 @@ const track = document.getElementById('track');
 const startButton = document.getElementById('start-button');
 
 const snailImages = [
-    'imgs/helicol.png',   // Asegúrate de usar las rutas correctas
+    'imgs/helicol.png',
     'imgs/magicol.png',
     'imgs/mecanicol.png',
     'imgs/turbocol.png'
@@ -16,7 +16,7 @@ let snails
 
 const getSnails = () => {
 
-    snails? snails.forEach(snail => track.removeChild(snail)): null;
+    snails ? snails.forEach(snail => track.removeChild(snail)) : null;
 
     let snailData = [];
 
@@ -30,7 +30,6 @@ const getSnails = () => {
             snailData = response.data.snails;
             console.log(snailData);
             startButton.innerText = "¡Iniciar Carrera!";
-            startButton.disabled = false;
         })
         .catch(error => {
             console.error("Error fetching snails, using local data:", error);
@@ -65,22 +64,21 @@ const getSnails = () => {
 
             startButton.disabled = false;
 
-
         })
 
 }
 
-getSnails();
+//getSnails();
 
 function moveSnail(snail) {
     // La velocidad base puede depender de la "velocidad" del caracol
     let baseMovement = snail.data.speed * 0.8; // Ajustar el multiplicador para que la carrera dure
 
     // La aceleración puede incrementar la velocidad gradualmente al inicio
-    // Podríamos hacer que `currentSpeed` se incremente hasta un máximo
+    // Que `currentSpeed` se incremente hasta un máximo
     snail.currentSpeed = Math.min(snail.currentSpeed + (snail.data.acceleration * 0.1), snail.data.speed * 1.5);
 
-    // La pegajosidad puede restar movimiento
+    // La pegajosidad resta movimiento
     const stickinessPenalty = snail.data.stickiness * 0.2; // Penalización por pegajosidad
 
     let actualMovement = Math.max(0, baseMovement + (snail.currentSpeed * 0.5) - stickinessPenalty);
@@ -133,49 +131,4 @@ function startRace() {
 startButton.addEventListener('click', startRace);
 startButton.innerText = "Cargando información de la carrera...";
 startButton.disabled = true;
-
-// Auth logic
-const loginForm = document.querySelector('#login-form');
-if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const username = loginForm.username.value;
-        const password = loginForm.password.value;
-
-        axios.post('http://localhost:3000/v1/auth/login', { username, password })
-            .then(response => {
-                localStorage.setItem('token', response.data.token);
-                window.location.href = 'carrera.html';
-            })
-            .catch(error => {
-                console.error('Login failed:', error);
-                alert('Login failed. Please check your credentials.');
-            });
-    });
-}
-
-const registerForm = document.querySelector('#register-form');
-if (registerForm) {
-    registerForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const username = registerForm.username.value;
-        const password = registerForm.password.value;
-        const confirmPassword = registerForm['confirm-password'].value;
-
-        if (password !== confirmPassword) {
-            alert('Passwords do not match');
-            return;
-        }
-
-        axios.post('http://localhost:3000/v1/auth/register', { username, password, confirmPassword })
-            .then(response => {
-                // Assuming the register endpoint also returns a token
-                localStorage.setItem('token', response.data.token);
-                window.location.href = 'carrera.html';
-            })
-            .catch(error => {
-                console.error('Registration failed:', error);
-                alert('Registration failed. Please try again.');
-            });
-    });
-}
+getSnails();
